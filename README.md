@@ -1,3 +1,13 @@
+## v6.0 — Account sync, persistent clinic and open review
+
+- IndexedDB is the primary clinic database. A timestamped localStorage mirror is a fallback for denied/unavailable IndexedDB. Legacy puzzles migrate on startup; newer snapshots win, including empty snapshots after deletion. The UI shows the actual backend and storage failures. Clearing site data still removes local data; JSON backups remain available.
+- Completed reviews automatically extract analysed mistakes/blunders. Manual extraction covers the saved library too. Positions are deduplicated by FEN; the dock badge shows due exercises.
+- Quick latest-finished-game import supports Chess.com and Lichess. Optional polling every two minutes runs only while the page is open and visible, imports new games into the library without replacing the active study, and does not automatically analyse them. Re-imports are deduplicated.
+- Desktop viewport-bounded workspace keeps scrolling within panels. Mobile/short screens retain normal scrolling for accessibility.
+- Both players' summary and phase statistics are open. The supplied move-accuracy formula is now shared by the review and radar: clamp(103.1668 × exp(−0.04354 × loss) − 3.1669, 0, 100), with zero loss = 100. Game accuracy is the local arithmetic mean, not a claim to reproduce another service's full aggregation.
+- Brilliant/Great/Miss are explicitly uncomputed, not false zeros. Game Rating/Elo and a Strategy score are not fabricated. Check/capture/promotion sample accuracy is labelled by its actual sample, not marketed as a validated tactical-skill rating. The supplied classification function was truncated and needs its remaining definition.
+- Verification: 27 Node tests, an IndexedDB-compatible emulator migration/write/reopen/deletion test, and DOM interaction checks including latest import deduplication. Real-browser visual QA and real-browser Full engine operation remain unverified here.
+
 ## Analytics Lab — الإصدار 5
 
 - شريط تنقل نحيف للمختبر، رادار الأداء، شجرة الافتتاحيات، عيادة الأخطاء والمكتبة؛ وضع Obsidian افتراضي وفاتح اختياري. الألوان، عرض الرقعة، جانبها، كثافة الواجهة وترتيب الألواح محفوظة محليًا. يمكن سحب مقابض الألواح لتغيير ترتيبها؛ نافذة المساحة بديل للوحة المفاتيح واللمس.

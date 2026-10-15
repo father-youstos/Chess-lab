@@ -1,3 +1,7 @@
+# v6.0
+
+IndexedDB clinic with fallback and migration; automatic mistake extraction; optional visible-tab account polling; latest-game deduplication; open two-player phase stats; supplied accuracy equation; explicit unknown classifications; desktop bounded workspace.
+
 # v5.0 — Analytics Lab
 
 Obsidian/daylight docked workspace, persistent panel order and width, UCI WDL, same-depth alternative pressure, mini-PV previews, player radar, clock-based statistics, repertoire recall, timed spaced repetition, isolated thought-line comparison, three-source explorer, and keyboard command palette. Preserves v4 overview and guided review.
