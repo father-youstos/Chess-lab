@@ -1,4 +1,4 @@
-import {localAccuracy,Chess,grade,winning} from './model.mjs?v=7';
+import {localAccuracy,Chess,grade,winning} from './model.mjs?v=8';
 export function positionKey(fen){return fen.split(' ').slice(0,4).join(' ');}
 export function phase(fen){const pieces=new Chess(fen).board().flat().filter(Boolean),heavy=pieces.filter(p=>!['k','p'].includes(p.type)).length;return heavy<=6?'end':Number(fen.split(' ')[5])<=10?'opening':'middle';}
 export function clockSeconds(comment=''){const m=comment.match(/\[%clk\s+(\d+):(\d{2}):(\d{2}(?:\.\d+)?)\]/);return m?Number(m[1])*3600+Number(m[2])*60+Number(m[3]):null;}

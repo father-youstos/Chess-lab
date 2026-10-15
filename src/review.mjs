@@ -1,4 +1,4 @@
-import {localAccuracy,grade,winning,explanation,tacticalFacts,START} from './model.mjs?v=7';
+import {localAccuracy,grade,winning,explanation,tacticalFacts,START} from './model.mjs?v=8';
 export const CATEGORIES=[
  {key:'brilliant',name:'Brilliant',icon:'!!',color:'#1baca6'},
  {key:'great',name:'Great',icon:'!',color:'#5c8bb0'},

@@ -41,3 +41,10 @@ Rebuilt the workspace hierarchy, moved secondary actions into dialogs, added pai
 - Selected games open the summary and run review there; Start Review opens the guided studio. Summary has analysis status, retry and stop controls.
 - Account ratings are provider values; W/D/L covers loaded games only. Finished public standard games only. Saved account reconnects on opening.
 - 33 tests pass; account-to-summary-to-studio DOM flow verified with mocked Worker. Real-device visual QA not performed.
+
+## 8.0 — Motion, evaluation readability and review efficiency
+- Animate legal forward/back moves and castling rook, capture pulse, check/checkmate highlights and colored classification badges. Honor OS reduced-motion preference; hide classification clues in training.
+- Wider high-contrast evaluation label with fixed white perspective, actual depth and originating engine name.
+- Preserve Hash across searches unless size changes; explicitly request full engine skill. Batch heavy review UI updates; deduplicate critical-position rechecks and prioritize largest drops.
+- Quick: 450 ms / 1 PV, preliminary. Balanced: 1200 ms / 2 PV plus up to 4 critical moves. Deep: 4000 ms / 2 PV plus up to 12; Custom retains user settings. Recheck button analyzes current and previous positions for 8 seconds each. Lower budget improves latency, not guaranteed accuracy.
+- Refuse cross-engine move classification when both engine identities differ. 35 tests pass including real Lite mate-in-one for either color and MultiPV execution. DOM motion dispatch and review journey pass; no device visual/performance benchmark.
