@@ -1,6 +1,6 @@
 import {Study,Chess,START,grade,formatScore,winning,pvSAN,explanation,splitPGN,tacticalFacts} from './model.mjs';
 import {Engine,BUILTIN} from './engine.mjs';
-import {fullEngineFiles} from './full-engine.mjs';
+import {fullEngineFiles} from './full-engine.mjs?v=3.1';
 import {Board,imgPath,setPieces} from './board.mjs';
 import {readStore,writeStore,get,importGames,download,validateBackup} from './services.mjs';
 const $=id=>document.getElementById(id),el=(tag,txt,cls)=>{const e=document.createElement(tag);if(txt!==undefined)e.textContent=txt;if(cls)e.className=cls;return e;},say=t=>{$('status').textContent=t;$('analysisStatus').textContent=t;};

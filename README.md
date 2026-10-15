@@ -2,7 +2,7 @@
 
 - مساحة متصلة من قسمين: رقعة كبيرة، ولوحة تحليل ونقلات. أدوات الدراسة في نافذة مستقلة.
 - زر أساسي لتحليل المباراة، نقلات في صفوف أبيض/أسود، تفرعات قابلة للفتح، وشرح بعد اكتمال المراجعة.
-- زر «تفعيل Full» ظاهر في لوحة المحرك. النسخة الكاملة Stockfish 19 single-thread مع NNUE الكامل تُنزّل من حزمة stockfish@19.0.1 المثبتة على jsDelivr (حوالي 100 MB).
+- زر «تفعيل Full» ظاهر في لوحة المحرك. النسخة الكاملة Stockfish 19 single-thread مع NNUE الكامل تُنزّل من حزمة stockfish@19.0.1 المثبتة على UNPKG (حوالي 100 MB).
 - يحاول المتصفح حفظ ملفي المحرك في Cache Storage، واستعادتهما تلقائيًا بعد اختيار Full سابقًا. قد يمسح المتصفح ذاكرته أو يرفض الحفظ؛ عندها يمكن إعادة التنزيل. لا ندّعي أداء خوادم التحليل السحابي: السرعة تعتمد على الجهاز.
 - Lite يظل متاحًا بدون التنزيل الكبير، والمحرك النشط يظهر باسمه. اختيار النسخة لا يغيّر التقييمات القديمة حتى إعادة تحليلها.
 - التحقق: اختبارات النموذج وUCI والمحرك المدمج الحقيقي وتنزيل Full وتخزينه. فحص DOM للتفاعل منفصل عن الاختبار البصري في متصفح حقيقي.
@@ -72,7 +72,7 @@ See `UPGRADES.md` for an honest mapping of the 50 requested upgrades and the rem
 
 ## Privacy and external services
 
-Local studies, settings and puzzles use localStorage. This is device/browser-specific and may be cleared; export backups. The Lichess OAuth verifier and token use sessionStorage and never enter exports, the repository, or logs. The disconnect button removes the local session token; full revocation is managed in Lichess account settings. The optional full engine downloads from jsDelivr, then computes locally. File-uploaded JavaScript engines should be trusted: they execute code in a worker.
+Local studies, settings and puzzles use localStorage. This is device/browser-specific and may be cleared; export backups. The Lichess OAuth verifier and token use sessionStorage and never enter exports, the repository, or logs. The disconnect button removes the local session token; full revocation is managed in Lichess account settings. The optional full engine downloads from UNPKG, then computes locally. File-uploaded JavaScript engines should be trusted: they execute code in a worker.
 
 Opening explorer requests require Lichess authentication in the API specification consulted on 2026-10-14. Tablebase lookup is public. Service availability, rate limits and API policies can change; local PGN import and bundled analysis are the fallback.
 

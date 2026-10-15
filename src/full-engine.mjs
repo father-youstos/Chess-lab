@@ -1,5 +1,5 @@
 // Pinned, full NNUE single-thread build. Cache API failure must not prevent use.
-const BASE='https://cdn.jsdelivr.net/npm/stockfish@19.0.1/bin/stockfish-19-single';
+const BASE='https://unpkg.com/stockfish@19.0.1/bin/stockfish-19-single';
 const CACHE='thomas-stockfish-19-full-v1';
 export async function fullEngineFiles({signal,onProgress=()=>{},fetcher=fetch,cacheStorage=globalThis.caches,cachedOnly=false}={}){
  let cache;try{cache=await cacheStorage?.open(CACHE)}catch{}
