@@ -1,5 +1,5 @@
-import {accuracyByNode,hybridAccuracy} from './accuracy.mjs?v=10';
-import {localAccuracy,grade,markOpeningBook,winning,explanation,tacticalFacts,START} from './model.mjs?v=10';
+import {accuracyByNode,hybridAccuracy} from './accuracy.mjs?v=11';
+import {localAccuracy,grade,markOpeningBook,winning,explanation,tacticalFacts,START} from './model.mjs?v=11';
 export const CATEGORIES=[
  {key:'brilliant',name:'Brilliant',icon:'!!',color:'#1baca6'},
  {key:'great',name:'Great',icon:'!',color:'#5c8bb0'},
@@ -9,6 +9,7 @@ export const CATEGORIES=[
  {key:'book',name:'Book',icon:'▤',color:'#c4976c'},
  {key:'inaccuracy',name:'Inaccuracy',icon:'?!',color:'#d9a51a'},
  {key:'mistake',name:'Mistake',icon:'?',color:'#e08a3c'},
+ {key:'miss',name:'Miss',icon:'×',color:'#ff7769'},
  {key:'blunder',name:'Blunder',icon:'??',color:'#dc625c'},
  {key:'pending',name:'لم تُحلّل بعد',icon:'…',color:'#889b98'}
 ];

@@ -1,3 +1,12 @@
+## v11.0.0 — Account learning and responsive analysis
+- Safely interrupt active engine searches on settings save, waiting for bestmove; retain the worker and avoid caching stopped searches. Custom review now honors chosen MultiPV.
+- Search the bundled ECO library with incremental results and open playable lines.
+- Generate personal exercises across loaded games or the entire paginated account archive. Persist positions, resume, deduplicate and recheck candidate errors; only account-owner moves qualify.
+- Add evidence-based local Miss heuristic, category move filters, red/green comparison arrows, and a non-destructive Show Punishment preview.
+- Show opening-family results and measured first-ten-move error counts with coverage.
+- Optional display of experimental, explicitly uncalibrated game performance estimate using the supplied ACPL/rating heuristic. No fabricated default rating.
+- Retain documented hybrid accuracy. Do not claim the supplied ad-hoc coefficients reproduce CAPS2.
+
 # v6.0
 
 IndexedDB clinic with fallback and migration; automatic mistake extraction; optional visible-tab account polling; latest-game deduplication; open two-player phase stats; supplied accuracy equation; explicit unknown classifications; desktop bounded workspace.
