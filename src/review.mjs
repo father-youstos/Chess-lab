@@ -1,5 +1,7 @@
-import {localAccuracy,grade,winning,explanation,tacticalFacts,START} from './model.mjs?v=6';
+import {localAccuracy,grade,winning,explanation,tacticalFacts,START} from './model.mjs?v=6.1';
 export const CATEGORIES=[
+ {key:'brilliant',name:'براقة مرشحة',icon:'!!',color:'#1baca6'},
+ {key:'great',name:'رائعة · فارق واضح',icon:'!',color:'#5c8bb0'},
  {key:'best',name:'أفضل نقلة',icon:'★',color:'#73a83b'},
  {key:'excellent',name:'ممتازة',icon:'!',color:'#76a658'},
  {key:'good',name:'جيدة',icon:'✓',color:'#92ad71'},
@@ -13,7 +15,7 @@ export function openingPrefixes(data){const set=new Set();for(const x of data){c
 export function reviewRows(study,book=new Set()){
  const line=study.mainline().slice(1);let path='';return line.map(n=>{path+=(path?' ':'')+n.move.lan;const g=grade(n),side=n.parent.fen.split(' ')[1];const loss=g?Math.max(0,(winning(n.parent.evaluation)-winning(n.evaluation))*(side==='w'?1:-1)):null;
  // Local, transparent heuristic. It is not Chess.com's proprietary accuracy.
- const key=study.root.fen===START&&book.has(path)?'book':!g?'pending':g.key==='good'&&loss<.5?'excellent':g.key;
+ const key=study.root.fen===START&&book.has(path)?'book':!g?'pending':g.key;
  return {node:n,side,key,loss,score:loss===null?null:localAccuracy(loss)};
  });
 }

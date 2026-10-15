@@ -27,3 +27,10 @@ Rebuilt the workspace hierarchy, moved secondary actions into dialogs, added pai
 - Added study-derived puzzles and spaced review scheduling.
 - Added reproducible Node tests and a GitHub Pages deployment workflow.
 - GitHub creation, deployment and real browser acceptance remain pending.
+
+## 6.1 — Classification integration
+- Apply supplied loss thresholds consistently to review, insights, radar and clinic extraction; retain actual loss even for engine-top moves.
+- Full-game review requests two PVs. CP alternative gap requires distinct moves at equal depth; it does not prove an only move.
+- Brilliant candidate is a local heuristic: engine top move, depth >=12, next PV reply captures and reduces mover material balance by >=2 pawn units, post-move chance index >=45. Not a verified sacrifice or Chess.com classification. Miss remains explicitly uncomputed.
+- Experimental Game Rating uses supplied formula only with a recorded base rating and complete analysis. Not calibrated Elo. Existing imported clinic exercises remain saved.
+- 31 tests pass including a real bundled Stockfish search; DOM and IndexedDB QA pass. No real-browser visual validation.
