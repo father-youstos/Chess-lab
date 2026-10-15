@@ -60,3 +60,11 @@ Rebuilt the workspace hierarchy, moved secondary actions into dialogs, added pai
 - User explicitly chose numerical phase ratings. Show local heuristic rating alongside accuracy for both players in opening, middlegame, endgame and check/capture/promotion samples.
 - Require a PGN base rating, >=3 sample moves and full sample analysis; otherwise show unavailable. Formula and lack of Elo/Chess.com calibration are visible.
 - Evaluation bar and graph use white/black with neutral unanalysed segments; keep readable numeric label. Phase-rating/graph DOM checks passed.
+
+## 10.0 — ZOZA chess, ZAZO and hybrid accuracy
+- Rename visible brand to ZOZA chess; add an original inline SVG/CSS coach named ZAZO, contextual phrases and opt-in browser speech. Respect reduced-motion preference.
+- English default, persisted language selection, Arabic RTL and six additional core-control languages (Spanish, French, German, Italian, Portuguese, Turkish). Advanced explanations fall back to English; no claim of complete translation of every diagnostic.
+- Replace arithmetic player accuracy with a documented 50/50 volatility-weighted / harmonic aggregate inspired by the public Lichess method. Keep the source's +1 uncertainty bonus, correctly distinguish missing/zero, and preserve Book labels without forced perfect accuracy. Same aggregation feeds phase samples and radar.
+- Keep mate and perspective normalization in the UCI adapter; no second sign flip. No claim of exact CAPS2 or equality to hosted services.
+- Add explicit batch progress/depth and ECO opening name above summary. Accuracy formula details in docs/accuracy-method.md.
+- 41 unit/integration tests pass. DOM flow, Book, phase rating, language default/switching and ZAZO checks pass. Real mobile layout/audio not verified.

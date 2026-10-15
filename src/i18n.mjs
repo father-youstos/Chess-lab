@@ -1,0 +1,56 @@
+import english from './translations.mjs?v=10';
+export const languages={en:'English',ar:'العربية',es:'Español',fr:'Français',de:'Deutsch',it:'Italiano',pt:'Português',tr:'Türkçe'};
+let language='en';try{language=localStorage.getItem('zoza-language')||'en';}catch{}if(!languages[language])language='en';
+export const getLanguage=()=>language;
+const columns=['en','es','fr','de','it','pt','tr'];
+const words=`My account|Mi cuenta|Mon compte|Mein Konto|Il mio account|Minha conta|Hesabım
+Studio|Estudio|Studio|Studio|Studio|Estúdio|Stüdyo
+Review|Revisión|Analyse|Analyse|Revisione|Revisão|İnceleme
+Radar|Radar|Radar|Radar|Radar|Radar|Radar
+Openings|Aperturas|Ouvertures|Eröffnungen|Aperture|Aberturas|Açılışlar
+Clinic|Clínica|Clinique|Training|Clinica|Clínica|Klinik
+Library|Biblioteca|Bibliothèque|Bibliothek|Biblioteca|Biblioteca|Kütüphane
+Commands|Comandos|Commandes|Befehle|Comandi|Comandos|Komutlar
+Theme|Tema|Thème|Design|Tema|Tema|Tema
+Settings|Ajustes|Réglages|Einstellungen|Impostazioni|Configurações|Ayarlar
+My account & games|Mi cuenta y partidas|Mon compte et mes parties|Mein Konto und Partien|Account e partite|Minha conta e partidas|Hesabım ve oyunlarım
+Your games|Tus partidas|Vos parties|Deine Partien|Le tue partite|Suas partidas|Oyunların
+Platform|Plataforma|Plateforme|Plattform|Piattaforma|Plataforma|Platform
+Username|Usuario|Utilisateur|Benutzername|Nome utente|Usuário|Kullanıcı adı
+Load account|Cargar cuenta|Charger le compte|Konto laden|Carica account|Carregar conta|Hesabı yükle
+Load more|Cargar más|Charger plus|Mehr laden|Carica altro|Carregar mais|Daha fazla yükle
+Load remaining archive|Cargar archivo restante|Charger les archives restantes|Restliches Archiv laden|Carica archivio restante|Carregar arquivo restante|Kalan arşivi yükle
+Stop loading|Detener carga|Arrêter le chargement|Laden stoppen|Ferma caricamento|Parar carregamento|Yüklemeyi durdur
+Analyze game|Analizar partida|Analyser la partie|Partie analysieren|Analizza partita|Analisar partida|Oyunu analiz et
+Analyze position|Analizar posición|Analyser la position|Stellung analysieren|Analizza posizione|Analisar posição|Konumu analiz et
+Stop analysis|Detener análisis|Arrêter l’analyse|Analyse stoppen|Ferma analisi|Parar análise|Analizi durdur
+Start Review →|Iniciar revisión →|Commencer l’analyse →|Analyse starten →|Inizia revisione →|Iniciar revisão →|İncelemeyi başlat →
+Choose another game|Elegir otra partida|Choisir une autre partie|Andere Partie wählen|Scegli altra partita|Escolher outra partida|Başka oyun seç
+Players|Jugadores|Joueurs|Spieler|Giocatori|Jogadores|Oyuncular
+White|Blancas|Blancs|Weiß|Bianco|Brancas|Beyaz
+Black|Negras|Noirs|Schwarz|Nero|Pretas|Siyah
+Player accuracy|Precisión del jugador|Précision du joueur|Spielgenauigkeit|Precisione del giocatore|Precisão do jogador|Oyuncu doğruluğu
+Opening|Apertura|Ouverture|Eröffnung|Apertura|Abertura|Açılış
+Moves|Jugadas|Coups|Züge|Mosse|Lances|Hamleler
+Notes|Notas|Notes|Notizen|Note|Notas|Notlar
+Previous|Anterior|Précédent|Zurück|Precedente|Anterior|Önceki
+Next →|Siguiente →|Suivant →|Weiter →|Avanti →|Próximo →|Sonraki →
+Show best line|Mostrar mejor línea|Voir la meilleure ligne|Beste Variante|Mostra linea migliore|Mostrar melhor linha|En iyi varyantı göster
+Try it|Inténtalo|Essayez|Versuchen|Prova|Tente|Dene
+Free analysis|Análisis libre|Analyse libre|Freie Analyse|Analisi libera|Análise livre|Serbest analiz
+Save|Guardar|Enregistrer|Speichern|Salva|Salvar|Kaydet
+Cancel|Cancelar|Annuler|Abbrechen|Annulla|Cancelar|İptal
+Delete|Eliminar|Supprimer|Löschen|Elimina|Excluir|Sil
+Training|Entrenamiento|Entraînement|Training|Allenamento|Treino|Antrenman
+Game library|Biblioteca de partidas|Bibliothèque de parties|Partienbibliothek|Archivio partite|Biblioteca de partidas|Oyun kütüphanesi
+Analysis studio|Estudio de análisis|Studio d’analyse|Analysestudio|Studio di analisi|Estúdio de análise|Analiz stüdyosu
+＋ Upload or paste PGN|＋ Subir o pegar PGN|＋ Importer ou coller PGN|＋ PGN laden oder einfügen|＋ Carica o incolla PGN|＋ Enviar ou colar PGN|＋ PGN yükle veya yapıştır
+Review quality|Nivel de análisis|Qualité d’analyse|Analysequalität|Qualità analisi|Qualidade da análise|Analiz kalitesi
+How is accuracy calculated?|¿Cómo se calcula la precisión?|Comment est calculée la précision ?|Wie wird Genauigkeit berechnet?|Come si calcola la precisione?|Como a precisão é calculada?|Doğruluk nasıl hesaplanır?`;
+const localized={};for(const row of words.split('\n')){const values=row.split('|');localized[values[0]]=Object.fromEntries(columns.map((l,i)=>[l,values[i]]));}
+const records=new WeakMap();const attrRecords=new WeakMap();let observer;
+const skip='#whiteName,#blackName,#reviewWhite,#reviewBlack,#gameNames,#eventLabel,#homeGames strong,#openingName,input,textarea,script,style,svg,option[value="ar"],.notranslate';
+function dynamicEnglish(s){const rules=[[/^تحليل الوضعية (\d+) من (\d+)$/,'Analyzing position $1 of $2'],[/^تدقيق اللحظة الحرجة (\d+) من (\d+)$/,'Verifying critical moment $1 of $2'],[/^النقلة (\d+) من (\d+)$/,'Move $1 of $2'],[/^نقلة (\d+) \/ (\d+)$/,'Move $1 / $2'],[/^(\d+) \/ (\d+) نقلة محلّلة(.*)$/,'$1 / $2 moves analyzed'],[/^(\d+) وضعية محلّلة$/,'$1 analyzed positions'],[/^عمق (.+)$/,'Depth $1'],[/^دور الأبيض/,'White to move'],[/^دور الأسود/,'Black to move'],[/^تم استيراد/,'Imported'],[/^جارٍ تحميل دفعة من المباريات…$/,'Loading a batch of games…'],[/^جارٍ تحميل التصنيفات…$/,'Loading ratings…'],[/^اختر مباراة أو حمّل دفعة أقدم\.$/,'Choose a game or load an older batch.'],[/^اكتمل تحميل الأرشيف المتاح.*$/,'Available archive loaded. Choose a game to begin.'],[/^لا توجد مباريات محمّلة بعد\.$/,'No games loaded yet.'],[/^لا توجد نتائج في المباريات المحمّلة\.$/,'No matching loaded games.'],[/^بدأ تحليل المباراة.*$/,'Analyzing the game. You can stop and keep completed results.'],[/^اكتمل تحليل المباراة.*$/,'Analysis complete. Start Review to explore each move.'],[/^حُفظت الدراسة.*$/,'Study saved on this device.'],[/^المراجعة المحفوظة جاهزة.*$/,'Saved review ready. Select Start Review.'],[/^المباراة جاهزة.*$/,'Game loaded. Wait for the engine, then select Analyze game.'],[/^أوقف التحليل.*$/,'Stop the current analysis before continuing.'],[/^المحرك لم يجهز بعد$/,'Engine is not ready yet.'],[/^جودة البحث —$/,'Search quality —'],[/^لا توجد أخطاء.*$/,'No analyzed mistakes are available yet.'],[/^غير محسوب.*$/,'Not calculated: no validated rule is available.']];for(const [pattern,replacement]of rules)if(pattern.test(s))return s.replace(pattern,replacement);return s;}
+export function t(s){if(language==='ar')return s;let en=english[s]||dynamicEnglish(s);if(/[\u0600-\u06ff]/.test(en)){en=en.replace(/(\d+) \/ (\d+) نقلة · (تقدير محلي|بيانات غير كافية للريت)/g,(_,a,b,c)=>a+' / '+b+' moves · '+(c==='تقدير محلي'?'Local estimate':'Insufficient rating data')).replace(/(\d+) مباراة محمّلة · (\d+) فوز \/ (\d+) تعادل \/ (\d+) خسارة/g,'$1 loaded games · $2 wins / $3 draws / $4 losses').replace(/^التصنيفات المنشورة على /,'Published ratings on ').replace(/^جارٍ الحفظ…$/,'Saving…').replace(/^حفظ العيادة: /,'Exercise storage: ').replace(/^الملخّص ✓$/,'Summary ✓').replace(/^الاختيار الأول: (.+)\.$/,'Top choice: $1.');}en=en.replace(/WDL للأبيض · فوز (.+) \/ تعادل (.+) \/ خسارة (.+)/,'White WDL · Win $1 / Draw $2 / Loss $3').replace(/(\d+) \/ (\d+) وضعية · اضغط للتنقّل/,'$1 / $2 positions · Select to navigate').replace(/اختيار المحرك عند عمق (\d+)؛ استكشف الخط لاختبار ردود الخصم\./,'Engine choice at depth $1. Explore the line to check the reply.').replace(/نقلة مطابقة لخط موثق في قاعدة الافتتاحيات المحلية\./,'A documented move in the local opening database.').replace(/نقلتك: /,'Your move: ').replace(/ · التقييم بعدها: /,' · Evaluation after: ').replace(/ \| البديل: /,' | Alternative: ').replace(/ · التقييم قبله: /,' · Evaluation before: ').replace(/بحث قصير · تصنيف أولي/,'Short search · Preliminary').replace(/بحث متوسط · قابل للتغير/,'Medium search · May change').replace(/بحث أعمق · ليس ضمانًا/,'Deeper search · Not a guarantee').replace(/نتيجة محفوظة/g,'Stored result').replace(/(\d+(?:\.\d+)?k?) عقدة/g,'$1 nodes').replace(/(\d+(?:\.\d+)?) ث(?=$| ·)/g,'$1 s');return localized[en]?.[language]||en;}
+export function translateUI(){observer?.disconnect();const walker=document.createTreeWalker(document.body,document.defaultView.NodeFilter.SHOW_TEXT);let n;while(n=walker.nextNode()){if(!n.parentElement||n.parentElement.closest(skip))continue;const current=n.nodeValue,record=records.get(n),source=record&&current===record.last?record.source:current,trimmed=source.trim();if(!trimmed)continue;const translated=source.replace(trimmed,t(trimmed));records.set(n,{source,last:translated});if(current!==translated)n.nodeValue=translated;}for(const e of document.querySelectorAll('[title],[aria-label],[placeholder]')){if(e.closest('svg'))continue;let record=attrRecords.get(e)||{};for(const a of ['title','aria-label','placeholder']){if(!e.hasAttribute(a))continue;const current=e.getAttribute(a),old=record[a],source=old&&old.last===current?old.source:current,last=t(source);record[a]={source,last};if(last!==current)e.setAttribute(a,last);}attrRecords.set(e,record);}document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';observer?.observe(document.body,{childList:true,subtree:true,characterData:true});}
+export function initLanguages(){const select=document.getElementById('languageSelect');select.value=language;select.onchange=()=>{language=select.value;try{localStorage.setItem('zoza-language',language);}catch{}translateUI();window.dispatchEvent(new window.Event('zoza-language'));};let queued=false;observer=new window.MutationObserver(()=>{if(queued)return;queued=true;queueMicrotask(()=>{queued=false;translateUI();});});translateUI();}
