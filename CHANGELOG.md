@@ -34,3 +34,10 @@ Rebuilt the workspace hierarchy, moved secondary actions into dialogs, added pai
 - Brilliant candidate is a local heuristic: engine top move, depth >=12, next PV reply captures and reduces mover material balance by >=2 pawn units, post-move chance index >=45. Not a verified sacrifice or Chess.com classification. Miss remains explicitly uncomputed.
 - Experimental Game Rating uses supplied formula only with a recorded base rating and complete analysis. Not calibrated Elo. Existing imported clinic exercises remain saved.
 - 31 tests pass including a real bundled Stockfish search; DOM and IndexedDB QA pass. No real-browser visual validation.
+
+## 7.0 — Account-first review journey
+- Home opens on account ratings and a searchable match list; persistent account dock item and PGN upload entry.
+- Chess.com month-by-month archives without the previous 30-game cap. Lichess 50-game timestamp pages. Load more, sequential load remaining, stop after current batch, explicit errors and retry.
+- Selected games open the summary and run review there; Start Review opens the guided studio. Summary has analysis status, retry and stop controls.
+- Account ratings are provider values; W/D/L covers loaded games only. Finished public standard games only. Saved account reconnects on opening.
+- 33 tests pass; account-to-summary-to-studio DOM flow verified with mocked Worker. Real-device visual QA not performed.
