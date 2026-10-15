@@ -1,14 +1,14 @@
-import {localAccuracy,grade,winning,explanation,tacticalFacts,START} from './model.mjs?v=6.1';
+import {localAccuracy,grade,winning,explanation,tacticalFacts,START} from './model.mjs?v=6.2';
 export const CATEGORIES=[
- {key:'brilliant',name:'براقة مرشحة',icon:'!!',color:'#1baca6'},
- {key:'great',name:'رائعة · فارق واضح',icon:'!',color:'#5c8bb0'},
- {key:'best',name:'أفضل نقلة',icon:'★',color:'#73a83b'},
- {key:'excellent',name:'ممتازة',icon:'!',color:'#76a658'},
- {key:'good',name:'جيدة',icon:'✓',color:'#92ad71'},
- {key:'book',name:'افتتاحية',icon:'▤',color:'#c4976c'},
- {key:'inaccuracy',name:'غير دقيقة',icon:'?!',color:'#d9a51a'},
- {key:'mistake',name:'خطأ',icon:'?',color:'#e08a3c'},
- {key:'blunder',name:'خطأ كبير',icon:'??',color:'#dc625c'},
+ {key:'brilliant',name:'Brilliant',icon:'!!',color:'#1baca6'},
+ {key:'great',name:'Great',icon:'!',color:'#5c8bb0'},
+ {key:'best',name:'Best',icon:'★',color:'#73a83b'},
+ {key:'excellent',name:'Excellent',icon:'!',color:'#76a658'},
+ {key:'good',name:'Good',icon:'✓',color:'#92ad71'},
+ {key:'book',name:'Book',icon:'▤',color:'#c4976c'},
+ {key:'inaccuracy',name:'Inaccuracy',icon:'?!',color:'#d9a51a'},
+ {key:'mistake',name:'Mistake',icon:'?',color:'#e08a3c'},
+ {key:'blunder',name:'Blunder',icon:'??',color:'#dc625c'},
  {key:'pending',name:'لم تُحلّل بعد',icon:'…',color:'#889b98'}
 ];
 export function openingPrefixes(data){const set=new Set();for(const x of data){const moves=(x.uci||'').trim().split(/\s+/).filter(Boolean);for(let i=1;i<=Math.min(24,moves.length);i++)set.add(moves.slice(0,i).join(' '));}return set;}
