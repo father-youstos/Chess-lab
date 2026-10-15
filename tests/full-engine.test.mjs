@@ -1,0 +1,7 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fullEngineFiles} from '../src/full-engine.mjs';
+function memoryCache(){const map=new Map();return {open:async()=>({match:async k=>map.get(k)?.clone(),put:async(k,v)=>map.set(k,v)})}}
+test('full engine caches both files and cached-only never downloads',async()=>{const cacheStorage=memoryCache();let calls=0;const fetcher=async()=>{calls++;return new Response('engine bytes')};assert.equal(await fullEngineFiles({cacheStorage,fetcher,cachedOnly:true}),null);assert.equal(calls,0);const files=await fullEngineFiles({cacheStorage,fetcher});assert.equal(await files.js.text(),'engine bytes');assert.equal(files.wasm.type,'application/wasm');assert.equal(calls,2);assert.ok(await fullEngineFiles({cacheStorage,fetcher,cachedOnly:true}));assert.equal(calls,2);});
+test('full engine tolerates unavailable storage and reports progress',async()=>{let progress=0;const files=await fullEngineFiles({cacheStorage:{open:async()=>{throw Error('denied')}},fetcher:async()=>new Response('bytes'),onProgress:()=>progress++});assert.equal(files.wasm.size,5);assert.ok(progress>=2);});
+test('full engine fails explicitly on HTTP errors and cancelled downloads',async()=>{await assert.rejects(fullEngineFiles({cacheStorage:null,fetcher:async()=>new Response('',{status:503})}),/503/);const controller=new AbortController();controller.abort();await assert.rejects(fullEngineFiles({cacheStorage:null,signal:controller.signal,fetcher:async()=>new Response('bytes')}),{name:'AbortError'});});

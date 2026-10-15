@@ -1,3 +1,7 @@
+# v3.0 — Thomas × Zoza studio
+
+Rebuilt the workspace hierarchy, moved secondary actions into dialogs, added paired move rows, clearer mobile controls, and a visible Full engine download with cancellation and persistent caching.
+
 # Changelog
 
 ## 2.0.0 — 2026-10-14
