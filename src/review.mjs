@@ -1,4 +1,4 @@
-import {localAccuracy,grade,winning,explanation,tacticalFacts,START} from './model.mjs?v=8';
+import {localAccuracy,grade,markOpeningBook,winning,explanation,tacticalFacts,START} from './model.mjs?v=9';
 export const CATEGORIES=[
  {key:'brilliant',name:'Brilliant',icon:'!!',color:'#1baca6'},
  {key:'great',name:'Great',icon:'!',color:'#5c8bb0'},
@@ -12,10 +12,11 @@ export const CATEGORIES=[
  {key:'pending',name:'لم تُحلّل بعد',icon:'…',color:'#889b98'}
 ];
 export function openingPrefixes(data){const set=new Set();for(const x of data){const moves=(x.uci||'').trim().split(/\s+/).filter(Boolean);for(let i=1;i<=Math.min(24,moves.length);i++)set.add(moves.slice(0,i).join(' '));}return set;}
-export function reviewRows(study,book=new Set()){
- const line=study.mainline().slice(1);let path='';return line.map(n=>{path+=(path?' ':'')+n.move.lan;const g=grade(n),side=n.parent.fen.split(' ')[1];const loss=g?Math.max(0,(winning(n.parent.evaluation)-winning(n.evaluation))*(side==='w'?1:-1)):null;
+export function reviewRows(study,book=null){
+ if(book)markOpeningBook(study,book);
+ const line=study.mainline().slice(1);let path='';return line.map(n=>{path+=(path?' ':'')+n.move.lan;const g=grade(n),side=n.parent.fen.split(' ')[1];const loss=g?.loss??null;
  // Local, transparent heuristic. It is not Chess.com's proprietary accuracy.
- const key=study.root.fen===START&&book.has(path)?'book':!g?'pending':g.key;
+ const key=g?.key||'pending';
  return {node:n,side,key,loss,score:loss===null?null:localAccuracy(loss)};
  });
 }

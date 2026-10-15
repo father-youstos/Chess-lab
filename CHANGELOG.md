@@ -48,3 +48,10 @@ Rebuilt the workspace hierarchy, moved secondary actions into dialogs, added pai
 - Preserve Hash across searches unless size changes; explicitly request full engine skill. Batch heavy review UI updates; deduplicate critical-position rechecks and prioritize largest drops.
 - Quick: 450 ms / 1 PV, preliminary. Balanced: 1200 ms / 2 PV plus up to 4 critical moves. Deep: 4000 ms / 2 PV plus up to 12; Custom retains user settings. Recheck button analyzes current and previous positions for 8 seconds each. Lower budget improves latency, not guaranteed accuracy.
 - Refuse cross-engine move classification when both engine identities differ. 35 tests pass including real Lite mate-in-one for either color and MultiPV execution. DOM motion dispatch and review journey pass; no device visual/performance benchmark.
+
+## 9.0 — Consistent Book classification and evaluation comparisons
+- Shared Book matching covers board, notation, explanations, summary, variations, radar and clinic extraction; exact standard-start prefixes only. Missing evaluations still produce no accuracy.
+- Reserve Best for the engine's first choice. Close alternatives use Excellent/Good by the documented loss thresholds. Remove uncalibrated Game Rating from the UI.
+- Prefer same-root, same-depth searched candidate scores for move loss; retain child-position fallback where unavailable. Keep last completed MultiPV iteration, avoiding mixed-depth final alternatives. Hash included in cache key.
+- Quick can recheck up to two largest candidate errors at 1200 ms per position when critical rechecks are enabled. No claim of superiority over cloud engines or equivalence to CAPS2.
+- 38 tests pass, including opening-label consistency, missing-score behavior, same-root comparisons and completed MultiPV depth. Engine values remain unscaled UCI output /100, white-normalized.
