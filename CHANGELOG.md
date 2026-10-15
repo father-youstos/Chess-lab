@@ -55,3 +55,8 @@ Rebuilt the workspace hierarchy, moved secondary actions into dialogs, added pai
 - Prefer same-root, same-depth searched candidate scores for move loss; retain child-position fallback where unavailable. Keep last completed MultiPV iteration, avoiding mixed-depth final alternatives. Hash included in cache key.
 - Quick can recheck up to two largest candidate errors at 1200 ms per position when critical rechecks are enabled. No claim of superiority over cloud engines or equivalence to CAPS2.
 - 38 tests pass, including opening-label consistency, missing-score behavior, same-root comparisons and completed MultiPV depth. Engine values remain unscaled UCI output /100, white-normalized.
+
+## 9.1 — Phase rating estimates and black/white evaluation
+- User explicitly chose numerical phase ratings. Show local heuristic rating alongside accuracy for both players in opening, middlegame, endgame and check/capture/promotion samples.
+- Require a PGN base rating, >=3 sample moves and full sample analysis; otherwise show unavailable. Formula and lack of Elo/Chess.com calibration are visible.
+- Evaluation bar and graph use white/black with neutral unanalysed segments; keep readable numeric label. Phase-rating/graph DOM checks passed.
