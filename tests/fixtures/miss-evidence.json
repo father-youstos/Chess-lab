@@ -1,0 +1,567 @@
+{
+  "engine": "Stockfish 19 Lite WASM",
+  "note": "Recorded local engine evidence, not Chess.com evaluations.",
+  "positions": [
+    {
+      "ply": 7,
+      "evaluation": {
+        "type": "cp",
+        "value": 100,
+        "pv": [
+          "c6b8",
+          "f3e5",
+          "d8e7",
+          "e5d3",
+          "e7e4",
+          "f1e2",
+          "e4d5",
+          "e1g1",
+          "d7d6",
+          "g2g4",
+          "h7h6",
+          "f1e1",
+          "f8e7",
+          "b1c3",
+          "d5a5",
+          "b2b4",
+          "a5b6",
+          "e2f3",
+          "c7c6",
+          "b4b5",
+          "b6d8",
+          "d1e2",
+          "d6d5",
+          "c1b2",
+          "e8f8"
+        ],
+        "depth": 20,
+        "nodes": 1628718,
+        "nps": 444397,
+        "time": 3665,
+        "engine": "Stockfish 19 Lite WASM",
+        "wdl": [
+          495,
+          505,
+          0
+        ]
+      },
+      "lines": [
+        {
+          "type": "cp",
+          "value": 100,
+          "pv": [
+            "c6b8",
+            "f3e5",
+            "d8e7",
+            "e5d3",
+            "e7e4",
+            "f1e2",
+            "e4d5",
+            "e1g1",
+            "d7d6",
+            "g2g4",
+            "h7h6",
+            "f1e1",
+            "f8e7",
+            "b1c3",
+            "d5a5",
+            "b2b4",
+            "a5b6",
+            "e2f3",
+            "c7c6",
+            "b4b5",
+            "b6d8",
+            "d1e2",
+            "d6d5",
+            "c1b2",
+            "e8f8"
+          ],
+          "depth": 20,
+          "nodes": 1628718,
+          "nps": 444397,
+          "time": 3665,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            495,
+            505,
+            0
+          ]
+        },
+        {
+          "type": "cp",
+          "value": 138,
+          "pv": [
+            "c6e7",
+            "f3e5",
+            "f6e4",
+            "d1e2",
+            "f7f5",
+            "f2f3",
+            "d7d6",
+            "e2b5",
+            "c7c6",
+            "d5c6",
+            "b7c6",
+            "e5c6",
+            "e7c6",
+            "b5c6",
+            "c8d7",
+            "c6d5",
+            "e4f6",
+            "d5d4",
+            "d7c6"
+          ],
+          "depth": 20,
+          "nodes": 1628718,
+          "nps": 444397,
+          "time": 3665,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            821,
+            179,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "ply": 8,
+      "evaluation": {
+        "type": "cp",
+        "value": 440,
+        "pv": [
+          "f3e5",
+          "d7d6",
+          "e5c4",
+          "c7c5",
+          "c2c3",
+          "d4b5",
+          "f1d3",
+          "f8e7",
+          "e1g1",
+          "b5c7",
+          "a2a4",
+          "e8g8",
+          "b1d2",
+          "g7g6",
+          "h2h3",
+          "b7b6",
+          "f1e1",
+          "f6d7",
+          "f2f4",
+          "a7a6"
+        ],
+        "depth": 20,
+        "nodes": 1614011,
+        "nps": 403502,
+        "time": 4000,
+        "engine": "Stockfish 19 Lite WASM",
+        "wdl": [
+          1000,
+          0,
+          0
+        ]
+      },
+      "lines": [
+        {
+          "type": "cp",
+          "value": 440,
+          "pv": [
+            "f3e5",
+            "d7d6",
+            "e5c4",
+            "c7c5",
+            "c2c3",
+            "d4b5",
+            "f1d3",
+            "f8e7",
+            "e1g1",
+            "b5c7",
+            "a2a4",
+            "e8g8",
+            "b1d2",
+            "g7g6",
+            "h2h3",
+            "b7b6",
+            "f1e1",
+            "f6d7",
+            "f2f4",
+            "a7a6"
+          ],
+          "depth": 20,
+          "nodes": 1614011,
+          "nps": 403502,
+          "time": 4000,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            1000,
+            0,
+            0
+          ]
+        },
+        {
+          "type": "cp",
+          "value": 218,
+          "pv": [
+            "f3d4",
+            "e5d4",
+            "d1d4",
+            "f8d6",
+            "c1e3",
+            "d8e7",
+            "b1d2",
+            "e8g8",
+            "d2c4",
+            "f6e4",
+            "c4d6",
+            "e4d6",
+            "f1d3",
+            "b7b6",
+            "e1c1",
+            "c8b7",
+            "h1e1",
+            "f7f5",
+            "e3f4",
+            "e7h4",
+            "g2g3",
+            "h4f6",
+            "d4f6",
+            "f8f6",
+            "c2c4",
+            "g8f7",
+            "f4d6",
+            "c7d6"
+          ],
+          "depth": 20,
+          "nodes": 1614011,
+          "nps": 403502,
+          "time": 4000,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            991,
+            9,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "ply": 28,
+      "evaluation": {
+        "type": "cp",
+        "value": 165,
+        "pv": [
+          "c3d5",
+          "c8h3",
+          "d4e4",
+          "a8e8",
+          "f2f4",
+          "h3f5",
+          "e4b4",
+          "g5h4",
+          "c2c3",
+          "a7a5",
+          "b4d4",
+          "e8d8",
+          "a1d1",
+          "d8d7",
+          "d4c5",
+          "h7h6",
+          "c3c4",
+          "f8d8",
+          "c5a5"
+        ],
+        "depth": 16,
+        "nodes": 375520,
+        "nps": 383967,
+        "time": 978,
+        "engine": "Stockfish 19 Lite WASM",
+        "wdl": [
+          963,
+          37,
+          0
+        ]
+      },
+      "lines": [
+        {
+          "type": "cp",
+          "value": 165,
+          "pv": [
+            "c3d5",
+            "c8h3",
+            "d4e4",
+            "a8e8",
+            "f2f4",
+            "h3f5",
+            "e4b4",
+            "g5h4",
+            "c2c3",
+            "a7a5",
+            "b4d4",
+            "e8d8",
+            "a1d1",
+            "d8d7",
+            "d4c5",
+            "h7h6",
+            "c3c4",
+            "f8d8",
+            "c5a5"
+          ],
+          "depth": 16,
+          "nodes": 375520,
+          "nps": 383967,
+          "time": 978,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            963,
+            37,
+            0
+          ]
+        },
+        {
+          "type": "cp",
+          "value": 77,
+          "pv": [
+            "h3h4",
+            "g5h4",
+            "c3d5",
+            "c8f5",
+            "c2c4",
+            "a8d8",
+            "a1d1",
+            "h7h6",
+            "d4a7",
+            "f5g4",
+            "d1d4",
+            "g4f3",
+            "a7b7",
+            "d8b8"
+          ],
+          "depth": 16,
+          "nodes": 375520,
+          "nps": 383967,
+          "time": 978,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            239,
+            761,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "ply": 29,
+      "evaluation": {
+        "type": "cp",
+        "value": 22,
+        "pv": [
+          "c8e6",
+          "a1d1",
+          "g5f4",
+          "h2g1",
+          "a8c8",
+          "d4a7",
+          "f4e5",
+          "a7d4",
+          "e5b8",
+          "d1d2",
+          "c8c4",
+          "d4b6",
+          "b8f4",
+          "b6e3",
+          "f4e3",
+          "f2e3",
+          "f8c8",
+          "c3d5"
+        ],
+        "depth": 21,
+        "nodes": 1666924,
+        "nps": 416626,
+        "time": 4001,
+        "engine": "Stockfish 19 Lite WASM",
+        "wdl": [
+          19,
+          979,
+          2
+        ]
+      },
+      "lines": [
+        {
+          "type": "cp",
+          "value": 22,
+          "pv": [
+            "c8e6",
+            "a1d1",
+            "g5f4",
+            "h2g1",
+            "a8c8",
+            "d4a7",
+            "f4e5",
+            "a7d4",
+            "e5b8",
+            "d1d2",
+            "c8c4",
+            "d4b6",
+            "b8f4",
+            "b6e3",
+            "f4e3",
+            "f2e3",
+            "f8c8",
+            "c3d5"
+          ],
+          "depth": 21,
+          "nodes": 1666924,
+          "nps": 416626,
+          "time": 4001,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            19,
+            979,
+            2
+          ]
+        },
+        {
+          "type": "cp",
+          "value": 36,
+          "pv": [
+            "f8e8",
+            "a1d1",
+            "c8d7",
+            "c3d5",
+            "d7c6",
+            "f1e1",
+            "g5e5",
+            "d4e5",
+            "e8e5",
+            "d5b4",
+            "g8f8",
+            "b4c6",
+            "b7c6",
+            "d1d7",
+            "a7a5",
+            "d7c7",
+            "e5c5",
+            "e1e4"
+          ],
+          "depth": 21,
+          "nodes": 1666924,
+          "nps": 416522,
+          "time": 4002,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            39,
+            960,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "ply": 30,
+      "evaluation": {
+        "type": "cp",
+        "value": 305,
+        "pv": [
+          "d4d5",
+          "f8f7",
+          "e5f6",
+          "g5d5",
+          "c3d5",
+          "g7f6",
+          "a1d1",
+          "c8e6",
+          "d5f4",
+          "e6d7",
+          "d1d6",
+          "d7c6",
+          "f1d1",
+          "f6f5",
+          "h2g1",
+          "a8e8",
+          "b2b3",
+          "f7e7",
+          "g2g3"
+        ],
+        "depth": 21,
+        "nodes": 1774156,
+        "nps": 443539,
+        "time": 4000,
+        "engine": "Stockfish 19 Lite WASM",
+        "wdl": [
+          1000,
+          0,
+          0
+        ]
+      },
+      "lines": [
+        {
+          "type": "cp",
+          "value": 305,
+          "pv": [
+            "d4d5",
+            "f8f7",
+            "e5f6",
+            "g5d5",
+            "c3d5",
+            "g7f6",
+            "a1d1",
+            "c8e6",
+            "d5f4",
+            "e6d7",
+            "d1d6",
+            "d7c6",
+            "f1d1",
+            "f6f5",
+            "h2g1",
+            "a8e8",
+            "b2b3",
+            "f7e7",
+            "g2g3"
+          ],
+          "depth": 21,
+          "nodes": 1774156,
+          "nps": 443539,
+          "time": 4000,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            1000,
+            0,
+            0
+          ]
+        },
+        {
+          "type": "cp",
+          "value": 230,
+          "pv": [
+            "e5f6",
+            "c8e6",
+            "f6g7",
+            "f8f7",
+            "d4e3",
+            "g5g6",
+            "c3e2",
+            "g6g7",
+            "c2c3",
+            "g8h8",
+            "e3d4",
+            "a8g8",
+            "d4g7",
+            "f7g7",
+            "g2g4"
+          ],
+          "depth": 21,
+          "nodes": 1774156,
+          "nps": 443539,
+          "time": 4000,
+          "engine": "Stockfish 19 Lite WASM",
+          "wdl": [
+            999,
+            1,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
-import {classifyEvidence} from './classification.mjs?v=14';
+import {comparableMoveEvidence} from './accuracy.mjs?v=15';
+import {classifyEvidence} from './classification.mjs?v=15';
 import {Chess} from '../vendor/chess.mjs';
 export {Chess};
 export const START=new Chess().fen();
@@ -25,13 +26,28 @@ export function alternativeGap(lines=[],fen){const [a,b]=lines;if(!a||!b||a.type
 export function sacrificeCandidate(n){const e=n.parent?.evaluation;if(!e||!(e.depth>=12)||e.pv?.[0]!==n.move?.lan||e.pv.length<2)return false;try{const c=new Chess(n.parent.fen),side=c.turn(),values={p:1,n:3,b:3,r:5,q:9,k:0};const balance=()=>c.board().flat().filter(Boolean).reduce((sum,p)=>sum+values[p.type]*(p.color===side?1:-1),0);const before=balance();c.move(e.pv[0]);const reply=c.move(e.pv[1]);return !!reply.captured&&before-balance()>=2;}catch{return false;}}
 export function estimateGameRating(base,accuracy,complete=true){if(!complete||!Number.isFinite(Number(base))||Number(base)<=0||accuracy===null||!Number.isFinite(accuracy))return null;return Math.round(Math.max(400,Number(base)+(accuracy-80)*18)/50)*50;}
 export function markOpeningBook(study,prefixes){function visit(n,path){n.bookMatch=!!n.parent&&study.root.fen===START&&prefixes.has(path);for(const child of n.children)visit(child,path+(path?' ':'')+child.move.lan);}visit(study.root,'');}
-export function grade(n){const book=n.bookMatch?{name:'Book',key:'book',loss:null}:null;if(!n.parent?.evaluation||!n.evaluation)return book;const before=n.parent.evaluation,after=n.evaluation;if(before.engine&&after.engine&&before.engine!==after.engine)return book;const side=n.parent.fen.split(' ')[1]==='w'?1:-1;
+// A local tactical heuristic, not a reconstruction of Chess.com's private rules.
+// Require a legal, sufficiently long PV and material retained through two replies.
+function materialBalance(c,side){const v={p:1,n:3,b:3,r:5,q:9,k:0};return c.board().flat().filter(Boolean).reduce((sum,p)=>sum+v[p.type]*(p.color===side?1:-1),0);}
+export function retainedMaterial(fen,e,side,baseline){
+ if(!(e?.depth>=12)||!e.pv||e.pv.length<8)return null;
+ try{const c=new Chess(fen),balances=[];for(const u of e.pv.slice(0,12)){c.move(u);if(c.turn()===side)balances.push(materialBalance(c,side)-baseline);}
+ return balances.length>=2?Math.min(...balances.slice(-2)):null;}catch{return null;}
+}
+export function materialOpportunity(n,evidence=comparableMoveEvidence(n)){
+ if(!n.parent||!evidence.after)return false;
+ const side=n.move.color,c=new Chess(n.parent.fen),baseline=materialBalance(c,side);
+ const best=retainedMaterial(n.parent.fen,evidence.before,side,baseline);
+ const played=retainedMaterial(evidence.source==='same-root'?n.parent.fen:n.fen,evidence.after,side,baseline);
+ return best!==null&&played!==null&&best>=1&&best-played>=1;
+}
+export function grade(n){const book=n.bookMatch?{name:'Book',key:'book',loss:null}:null;if(!n.parent?.evaluation||!n.evaluation)return book;const evidence=comparableMoveEvidence(n);if(!evidence.after)return book;const before=evidence.before,after=evidence.after;const side=n.parent.fen.split(' ')[1]==='w'?1:-1;
  // Prefer a searched alternative at the SAME root and depth to unrelated child searches.
- const alternative=n.parent.lines?.find(e=>e.depth===before.depth&&e.pv?.[0]===n.move.lan&&(!e.engine||!before.engine||e.engine===before.engine));
- const wb=side===1?winning(before):100-winning(before),wa=side===1?winning(alternative||after):100-winning(alternative||after),loss=Math.max(0,wb-wa),top=before.pv?.[0]===n.move.lan;
+
+ const wb=side===1?winning(before):100-winning(before),wa=side===1?winning(after):100-winning(after),loss=Math.max(0,wb-wa),top=before.pv?.[0]===n.move.lan;
  if(book)return {...book,loss};const prev=n.parent.parent?.evaluation,comparable=prev&&(!prev.engine||!before.engine||prev.engine===before.engine),prior=comparable?(side===1?winning(prev):100-winning(prev)):null;
- const cpBefore=before.type==='cp'?before.value*side:null,selected=alternative||after,cpAfter=selected.type==='cp'?selected.value*side:null;
- const key=classifyEvidence({winBefore:wb,winAfter:wa,cpBefore,cpAfter,opponentWinLoss:prior===null?null:wb-prior,opponentCpLoss:comparable&&prev.type==='cp'&&cpBefore!==null?cpBefore-prev.value*side:null,top,gap:alternativeGap(n.parent.lines,n.parent.fen),sacrifice:sacrificeCandidate(n),recapture:!!(n.move.captured&&n.parent.move?.captured&&n.move.to===n.parent.move.to)});
+ const cpBefore=before.type==='cp'?before.value*side:null,selected=after,cpAfter=selected.type==='cp'?selected.value*side:null;
+ const key=classifyEvidence({winBefore:wb,winAfter:wa,cpBefore,cpAfter,opponentWinLoss:prior===null?null:wb-prior,opponentCpLoss:comparable&&prev.type==='cp'&&cpBefore!==null?cpBefore-prev.value*side:null,top,gap:alternativeGap(n.parent.lines,n.parent.fen),sacrifice:sacrificeCandidate(n),materialOpportunity:materialOpportunity(n,evidence),recapture:!!(n.move.captured&&n.parent.move?.captured&&n.move.to===n.parent.move.to)});
  return key?{name:({brilliant:'Brilliant',great:'Great',best:'Best',excellent:'Excellent',good:'Good',inaccuracy:'Inaccuracy',mistake:'Mistake',miss:'Miss',blunder:'Blunder'})[key],key,loss,cpLoss:cpBefore!==null&&cpAfter!==null?Math.max(0,cpBefore-cpAfter):null}:null;}
 
 export function formatScore(e){if(!e)return '—';if(e.terminal==='checkmate')return '#0';if(e.type==='mate')return '#'+(e.value<0?'−':'')+Math.abs(e.value);return (e.value>=0?'+':'')+(e.value/100).toFixed(2)}
