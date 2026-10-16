@@ -1,3 +1,10 @@
+## v12.0.0 — Transparent strict comparison and phase presentation
+- Tighten Great to an equal-depth 220 cp alternative gap in the 20–78 chance band, excluding immediate same-square recaptures.
+- Apply documented CP-aware local classifications, with missing/mate handling and opportunity evidence for Miss. Best remains the actual first engine choice.
+- Add optional ZOZA Strict accuracy using effective CP/chance loss, error-weighted aggregation and exact zero harmonic limit. Hybrid remains the default; both results are shown from identical saved evaluations. Book does not force 100%.
+- Replace experimental overall rating blend with the user-proposed count-based estimate, explicitly uncalibrated; no assumed 1200 baseline.
+- Add emerald Game Rating badges and colored phase accuracy/rating samples before Start Review. Keep phases separate from tactical sample categories.
+
 ## v11.0.0 — Account learning and responsive analysis
 - Safely interrupt active engine searches on settings save, waiting for bestmove; retain the worker and avoid caching stopped searches. Custom review now honors chosen MultiPV.
 - Search the bundled ECO library with incremental results and open playable lines.

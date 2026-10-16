@@ -1,4 +1,4 @@
-import {Chess,grade} from './model.mjs?v=11';
+import {Chess,grade} from './model.mjs?v=12';
 let pieceSet='classic';export const setPieces=value=>pieceSet=value;export const imgPath=p=>'assets/pieces/'+(pieceSet==='chessnut'?'chessnut/':'')+p.color+p.type.toUpperCase()+'.svg';
 const names={p:'بيدق',n:'حصان',b:'فيل',r:'رخ',q:'وزير',k:'ملك'};
 export class Board{
