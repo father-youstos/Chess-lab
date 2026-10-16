@@ -1,6 +1,6 @@
 import {gameKey,openingFor,openingLeaks,puzzleCandidates,performanceEstimate,countPerformanceEstimate} from './archive-lab.mjs?v=15';
 import {initLanguages,translateUI,getLanguage} from './i18n.mjs?v=15';
-import {initCoach,coachSay} from './zazo.mjs?v=15';
+import {initCoach,coachSay} from './zazo.mjs?v=15.1';
 import {playerAccuracy,accuracyByNode,setAccuracyMode,getAccuracyMode} from './accuracy.mjs?v=15';
 import {AccountFeed} from './account.mjs?v=15';
 import {ClinicStore} from './clinic-store.mjs';
