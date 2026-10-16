@@ -1,3 +1,9 @@
+## v14.0.0 — One ZOZA Accuracy score
+- Replace the two-method selector with one result: equal arithmetic average of final Hybrid and Strict aggregates over the same moves.
+- Apply the same aggregation to game, phase samples and radar. Retain separate components only in audit data.
+- Ignore legacy method preferences on startup. No engine rerun required; round only for display.
+- Keep missing evidence missing; do not substitute zero or claim CAPS2 calibration.
+
 ## v13.0.0 — ZOZA coach and comparable accuracy evidence
 - Correct the visible coach name to ZOZA / زوزا across languages and accessible labels.
 - Prefer same-root, same-depth engine evaluations of the played move when available for accuracy, matching the comparison used for classifications. Keep raw engine evidence unchanged.

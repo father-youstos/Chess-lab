@@ -1,5 +1,5 @@
-import {accuracyByNode,playerAccuracy} from './accuracy.mjs?v=13';
-import {localAccuracy,grade,markOpeningBook,winning,explanation,tacticalFacts,START} from './model.mjs?v=13';
+import {accuracyByNode,playerAccuracy} from './accuracy.mjs?v=14';
+import {localAccuracy,grade,markOpeningBook,winning,explanation,tacticalFacts,START} from './model.mjs?v=14';
 export const CATEGORIES=[
  {key:'brilliant',name:'Brilliant',icon:'!!',color:'#1baca6'},
  {key:'great',name:'Great',icon:'!',color:'#5c8bb0'},
