@@ -1,4 +1,4 @@
-import {classifyEvidence} from './classification.mjs?v=12';
+import {classifyEvidence} from './classification.mjs?v=13';
 import {Chess} from '../vendor/chess.mjs';
 export {Chess};
 export const START=new Chess().fen();

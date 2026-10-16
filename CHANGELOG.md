@@ -1,3 +1,9 @@
+## v13.0.0 — ZOZA coach and comparable accuracy evidence
+- Correct the visible coach name to ZOZA / زوزا across languages and accessible labels.
+- Prefer same-root, same-depth engine evaluations of the played move when available for accuracy, matching the comparison used for classifications. Keep raw engine evidence unchanged.
+- Report same-root / equal-depth / unequal-depth / missing evaluation coverage; export per-move evidence for reproducible comparisons.
+- Clearly label Strict as deliberately harsher, not an improvement or CAPS2 approximation. No target-score fitting or unsupported accuracy claims.
+
 ## v12.0.0 — Transparent strict comparison and phase presentation
 - Tighten Great to an equal-depth 220 cp alternative gap in the 20–78 chance band, excluding immediate same-square recaptures.
 - Apply documented CP-aware local classifications, with missing/mate handling and opportunity evidence for Miss. Best remains the actual first engine choice.

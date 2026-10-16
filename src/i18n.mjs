@@ -1,4 +1,4 @@
-import english from './translations.mjs?v=12';
+import english from './translations.mjs?v=13';
 export const languages={en:'English',ar:'العربية',es:'Español',fr:'Français',de:'Deutsch',it:'Italiano',pt:'Português',tr:'Türkçe'};
 let language='en';try{language=localStorage.getItem('zoza-language')||'en';}catch{}if(!languages[language])language='en';
 export const getLanguage=()=>language;
